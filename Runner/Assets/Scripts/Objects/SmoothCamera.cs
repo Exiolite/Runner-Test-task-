@@ -1,5 +1,4 @@
-﻿using Core;
-using Events;
+﻿using Events;
 using UnityEngine;
 
 namespace Objects

@@ -1,4 +1,4 @@
-﻿using Objects;
+﻿using Events;
 
 namespace Core.LevelManagement
 {
@@ -27,14 +27,18 @@ namespace Core.LevelManagement
             _levelCreator.Initialize(this);
         }
 
-        public void GenerateLevel()
+        public void CreateLevel()
         {
             if (CheckInitialization())
             {
                 _levelCreator.CreateLevel();
             }
         }
-        
+
+        public void RecreateLevel()
+        {
+            CreateLevel();
+        }
         
 
         private bool CheckInitialization()

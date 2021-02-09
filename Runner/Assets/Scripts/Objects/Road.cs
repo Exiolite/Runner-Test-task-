@@ -4,19 +4,8 @@ using UnityEngine;
 
 namespace Objects
 {
-    public class Food : ObjectBehaviour
+    public class Road : ObjectBehaviour
     {
-        private float _foodStrength = 50;
-
-
-
-        public void SetFoodStrength(int value)
-        {
-            _foodStrength = value;
-        }
-        
-        
-        
         protected override void Initialization()
         {
             
@@ -40,9 +29,10 @@ namespace Objects
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.gameObject.CompareTag("Player")) return;
-            FoodEvent.AddStrength.Invoke(_foodStrength);
-            DestroyItSelf();
+            if (other.gameObject.CompareTag("Player"))
+            {
+                LevelEvent.PlayerWins.Invoke();
+            }
         }
     }
 }

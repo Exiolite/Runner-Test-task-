@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System;
+using Core;
 using Events;
 using Modules;
 using UnityEngine;
@@ -34,7 +35,6 @@ namespace Objects.Obstacles
         
         protected override void OnStart()
         {
-            ObstacleEvent.PlayerMoveObstacle.AddListener(PlayerMoveObstacle);
             LevelEvent.PlayerLose.AddListener(StopAllActions);
         }
 
@@ -57,21 +57,19 @@ namespace Objects.Obstacles
         protected override void BeforeDestroy()
         {
             ObstacleEvent.PlayerWinsObstacle.Invoke();
-            ObstacleEvent.PlayerMoveObstacle.RemoveListener(PlayerMoveObstacle);
         }
-
-
+        
+        
 
         private void StopAllActions()
         {
             _isPlayerMovingObstacle = false;
         }
-        
-        private void PlayerMoveObstacle(GameObject targetObstacle)
+
+        private void OnTriggerEnter(Collider other)
         {
-            if (gameObject != targetObstacle) return;
-            
-            if (_isPlayerMovingObstacle == false)
+            if (_isPlayerMovingObstacle) return;
+            if (other.gameObject.CompareTag("Player"))
             {
                 _isPlayerMovingObstacle = true;
             }

@@ -12,7 +12,7 @@ namespace Modules
         private bool _isInitialized;
 
         private int _maxLeftLine = 0;
-        private int _maxRightLine = 4;
+        private int _maxRightLine = 3;
 
 
 

@@ -1,5 +1,4 @@
 ﻿using Core;
-using Core.LevelManagement;
 using Events;
 using Modules;
 using UnityEngine;
@@ -13,36 +12,40 @@ namespace Objects
         private readonly Strength _strength = new Strength();
         private bool _isPlayerPushingObstacle;
 
+        private bool _disableInput;
+        
         
         
         protected override void Initialization()
         {
+            _disableInput = false;
             movement.Initialize(transform);
         }
 
         protected override void OnStart()
         {
             LevelEvent.SetPlayer.Invoke(this);
-            
             ObstacleEvent.PlayerWinsObstacle.AddListener(PlayerWinsObstacle);
-            
             CameraEvent.SetPlayerAsTarget.Invoke(transform);
-            
             GuiEvent.UpdateStrengthCounter.Invoke(_strength.GetRoundedStrength());
-            
             FoodEvent.AddStrength.AddListener(AddStrength);
+            LevelEvent.PlayerWins.AddListener(DisableExecute);
         }
 
         protected override void Execute()
         {
+            if (_disableInput) return;
             // For debug
-            if (Input.GetKeyDown(KeyCode.A))
+            if (_isPlayerPushingObstacle == false)
             {
-                movement.ChangeLine(false);
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                movement.ChangeLine(true);
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    movement.ChangeLine(false);
+                }
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    movement.ChangeLine(true);
+                }
             }
             
             
@@ -65,6 +68,7 @@ namespace Objects
 
         protected override void BeforeDestroy()
         {
+            LevelEvent.PlayerWins.RemoveListener(DisableExecute);
             LevelEvent.ResetPlayer.Invoke();
             CameraEvent.ResetTarget.Invoke();
             ObstacleEvent.PlayerWinsObstacle.RemoveListener(PlayerWinsObstacle);
@@ -78,11 +82,10 @@ namespace Objects
             GuiEvent.UpdateStrengthCounter.Invoke(_strength.GetRoundedStrength());
         }
         
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Obstacle"))
             {
-                ObstacleEvent.PlayerMoveObstacle.Invoke(other.gameObject);
                 _isPlayerPushingObstacle = true;
             }
         }
@@ -90,6 +93,11 @@ namespace Objects
         private void PlayerWinsObstacle()
         {
             _isPlayerPushingObstacle = false;
+        }
+
+        private void DisableExecute()
+        {
+            _disableInput = true;
         }
     }
 }

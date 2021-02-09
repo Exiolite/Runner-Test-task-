@@ -1,4 +1,5 @@
 ﻿using Core.LevelManagement;
+using Events;
 using UnityEngine;
 
 namespace Core
@@ -52,11 +53,12 @@ namespace Core
         {
             LevelManager.InitializeFactory(_factory);
             LevelManager.Initialize();
+            LevelEvent.RecreateLevel.AddListener(LevelManager.RecreateLevel);
         }
 
         private void GenerateLevel()
         {
-            LevelManager.GenerateLevel();
+            LevelManager.CreateLevel();
         }
     }
 }

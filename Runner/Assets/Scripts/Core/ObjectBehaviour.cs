@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Events;
 using UnityEngine;
 
 namespace Core
@@ -16,6 +16,7 @@ namespace Core
         private void Start()
         {
             OnStart();
+            LevelEvent.DestroyAllObjects.AddListener(DestroyItSelf);
         }
 
         private void Update()
