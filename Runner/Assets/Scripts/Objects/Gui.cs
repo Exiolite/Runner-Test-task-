@@ -1,22 +1,33 @@
-﻿using Core;
+﻿using System.Globalization;
+using Core;
+using Events;
+using TMPro;
+using UnityEngine;
 
 namespace Objects
 {
     public class Gui : ObjectBehaviour
     {
-        protected override void Initialization()
-        {
-            throw new System.NotImplementedException();
-        }
+        [SerializeField] private TextMeshProUGUI playersStrengthCounter;
+
+        private float _playersStrength;
+
+        
+
+        protected override void Initialization(){}
 
         protected override void OnStart()
         {
-            throw new System.NotImplementedException();
+            GuiEvent.UpdateStrengthCounter.AddListener(SetStrength);
         }
 
-        protected override void Execute()
+        protected override void Execute(){}
+        protected override void BeforeDestroy(){}
+
+
+        private void SetStrength(float strength)
         {
-            throw new System.NotImplementedException();
+            playersStrengthCounter.text = strength.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

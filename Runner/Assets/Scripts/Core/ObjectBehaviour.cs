@@ -26,5 +26,12 @@ namespace Core
         protected abstract void Initialization();
         protected abstract void OnStart();
         protected abstract void Execute();
+        protected abstract void BeforeDestroy();
+
+        protected void DestroyItSelf()
+        {
+            BeforeDestroy();
+            Destroy(gameObject);
+        }
     }
 }

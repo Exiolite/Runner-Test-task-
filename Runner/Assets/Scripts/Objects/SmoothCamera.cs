@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Objects
 {
-    public class SmoothCamera : ObjectBehaviour
+    public class SmoothCamera : MonoBehaviour
     {
         [SerializeField] private float smoothSpeed = 3;
         [SerializeField] private Vector3 offset;
@@ -12,19 +12,13 @@ namespace Objects
         private Transform _targetTransform;
         private bool _isTargetSetted;
         
+        
 
-
-        protected override void Initialization(){}
-
-        protected override void OnStart()
+        private void Start()
         {
             CameraEvent.SetPlayerAsTarget.AddListener(SetTarget);
             CameraEvent.ResetTarget.AddListener(ResetTarget);
         }
-        
-        protected override void Execute(){}
-
-
 
         private void SetTarget(Transform target)
         {
@@ -37,8 +31,6 @@ namespace Objects
             _targetTransform = null;
             _isTargetSetted = false;
         }
-        
-        
         
         private void LateUpdate()
         {

@@ -31,5 +31,6 @@ namespace Objects.Obstacles
             DisplayObstacleStrength();
         }
         protected override void Execute(){}
+        protected override void BeforeDestroy(){}
     }
 }

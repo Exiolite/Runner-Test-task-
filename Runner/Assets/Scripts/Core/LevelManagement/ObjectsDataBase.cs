@@ -13,8 +13,8 @@ namespace Core.LevelManagement
 
         public void LoadResources()
         {
-            _obstacle = Resources.Load<Obstacle>("Resources/Prefabs/Obstacles/Obstacle");
-            _player = Resources.Load<Player>("Resources/Prefabs/Player/Player");
+            _obstacle = Resources.Load<Obstacle>("Prefabs/Obstacles/Obstacle");
+            _player = Resources.Load<Player>("Prefabs/Player/Player");
         }
 
         public Obstacle TryGetObstacle(out bool success)

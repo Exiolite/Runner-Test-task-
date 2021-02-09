@@ -24,8 +24,11 @@ namespace Core
         }
         #endregion
 
-        private readonly LevelManager _levelManager = new LevelManager();
+
+        public LevelManager LevelManager { get; } = new LevelManager();
         
+        [SerializeField] private bool disableLevelCreation;
+
         private Factory _factory;
         
         
@@ -33,7 +36,11 @@ namespace Core
         private void FirstInitialization()
         {
             AddFactory();
-            ModulesInitialization();
+            LevelManagerInitialization();
+            if (disableLevelCreation == false)
+            {
+                GenerateLevel();
+            }
         }
 
         private void AddFactory()
@@ -41,15 +48,15 @@ namespace Core
             _factory = gameObject.AddComponent<Factory>();
         }
 
-        private void ModulesInitialization()
+        private void LevelManagerInitialization()
         {
-            _levelManager.InitializeFactory(_factory);
-            _levelManager.Initialize();
+            LevelManager.InitializeFactory(_factory);
+            LevelManager.Initialize();
         }
 
         private void GenerateLevel()
         {
-            _levelManager.GenerateLevel();
+            LevelManager.GenerateLevel();
         }
     }
 }

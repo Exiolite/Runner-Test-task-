@@ -10,13 +10,11 @@ namespace Core.LevelManagement
         
         private bool _isFactoryInitialized;
 
-        private readonly LevelGenerator _levelGenerator = new LevelGenerator();
+        private readonly LevelCreator _levelCreator = new LevelCreator();
         
-        // Instanced Objects.
-        private Player _player;
 
-        
-        
+
+
         public void InitializeFactory(Factory factory)
         {
             Factory = factory;
@@ -26,19 +24,19 @@ namespace Core.LevelManagement
         public void Initialize()
         {
             DataBase.LoadResources();
-            _levelGenerator.Initialize(this);
+            _levelCreator.Initialize(this);
         }
 
         public void GenerateLevel()
         {
             if (CheckInitialization())
             {
-                _levelGenerator.CreateLevel();
+                _levelCreator.CreateLevel();
             }
         }
         
         
-        
+
         private bool CheckInitialization()
         {
             if (_isFactoryInitialized)

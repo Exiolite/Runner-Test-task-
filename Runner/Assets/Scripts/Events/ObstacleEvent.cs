@@ -5,8 +5,8 @@ namespace Events
 {
     public static class ObstacleEvent
     {
-        public static PlayerMoveObstacle PlayerMoveObstacle = new PlayerMoveObstacle();
-        public static PlayerWinsObstacle PlayerWinsObstacle = new PlayerWinsObstacle();
+        public static readonly PlayerMoveObstacle PlayerMoveObstacle = new PlayerMoveObstacle();
+        public static readonly PlayerWinsObstacle PlayerWinsObstacle = new PlayerWinsObstacle();
     }
     
     public class PlayerMoveObstacle : UnityEvent <GameObject>{}

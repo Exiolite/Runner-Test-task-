@@ -29,12 +29,13 @@ namespace Objects.Obstacles
         protected override void Initialization()
         {
             movement.Initialize(transform);
-            SetObstacle(430);
+            SetObstacle(150);
         }
         
         protected override void OnStart()
         {
             ObstacleEvent.PlayerMoveObstacle.AddListener(PlayerMoveObstacle);
+            LevelEvent.PlayerLose.AddListener(StopAllActions);
         }
 
         protected override void Execute()
@@ -53,8 +54,19 @@ namespace Objects.Obstacles
             }
         }
 
+        protected override void BeforeDestroy()
+        {
+            ObstacleEvent.PlayerWinsObstacle.Invoke();
+            ObstacleEvent.PlayerMoveObstacle.RemoveListener(PlayerMoveObstacle);
+        }
 
 
+
+        private void StopAllActions()
+        {
+            _isPlayerMovingObstacle = false;
+        }
+        
         private void PlayerMoveObstacle(GameObject targetObstacle)
         {
             if (gameObject != targetObstacle) return;
@@ -63,13 +75,6 @@ namespace Objects.Obstacles
             {
                 _isPlayerMovingObstacle = true;
             }
-        }
-
-        private void DestroyItSelf()
-        {
-            Destroy(gameObject);
-            ObstacleEvent.PlayerWinsObstacle.Invoke();
-            ObstacleEvent.PlayerMoveObstacle.RemoveListener(PlayerMoveObstacle);
         }
     }
 }

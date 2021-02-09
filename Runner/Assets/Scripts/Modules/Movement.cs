@@ -11,8 +11,8 @@ namespace Modules
         private Transform _parentTransform;
         private bool _isInitialized;
 
-        private int _maxLeftLine;
-        private int _maxRightLine;
+        private int _maxLeftLine = 0;
+        private int _maxRightLine = 4;
 
 
 
@@ -42,11 +42,11 @@ namespace Modules
             int clampedPosX;
             if (swipeDirection)
             {
-                clampedPosX = Mathf.Clamp((int)_parentTransform.position.x + 1, -1, 2);
+                clampedPosX = Mathf.Clamp((int)_parentTransform.position.x + 1, _maxLeftLine, _maxRightLine);
             }
             else
             {
-                clampedPosX = Mathf.Clamp((int)_parentTransform.position.x - 1, -1, 2);
+                clampedPosX = Mathf.Clamp((int)_parentTransform.position.x - 1, _maxLeftLine, _maxRightLine);
             }
             _parentTransform.position = new Vector3(clampedPosX, _parentTransform.position.y, _parentTransform.position.z);
         }
