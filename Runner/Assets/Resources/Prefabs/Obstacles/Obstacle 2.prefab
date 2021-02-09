@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408158370498994435}
-  m_Mesh: {fileID: -2432090755550338912, guid: 5be7b9e76e3e854499eea4fbd00d46cf, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: e91874636303f684faa283b5f50a87a4, type: 3}
 --- !u!23 &408158370498994432
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -166,8 +166,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4287037325
+  m_fontColor: {r: 0.5544769, g: 1, b: 0.5235849, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 408158371021486629}
   - component: {fileID: 8618137069457050457}
   m_Layer: 0
-  m_Name: Obstacle
+  m_Name: Obstacle 2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

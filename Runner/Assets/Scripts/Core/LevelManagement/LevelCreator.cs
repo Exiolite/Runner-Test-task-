@@ -76,7 +76,7 @@ namespace Core.LevelManagement
                 int minStrengthForLine = 10000;
                 for (var posX = 0; posX < 4; posX++)
                 {
-                    var obstacle = _levelManager.DataBase.TryGetObstacle(out var success);
+                    var obstacle = _levelManager.DataBase.TryGetRandomObstacle(out var success);
                     if (success)
                     {
                         var obstaclePosition = new Vector3(posX, obstacle.transform.position.y, obstacleBarricade * ObstaclesRange + OffsetZ);
@@ -96,7 +96,7 @@ namespace Core.LevelManagement
 
         private int GenerateRandomStrength()
         {
-            return Random.Range(150, 1500);
+            return Random.Range(150, 1000);
         }
     }
 }

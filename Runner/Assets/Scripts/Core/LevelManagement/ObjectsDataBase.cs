@@ -6,7 +6,7 @@ namespace Core.LevelManagement
 {
     public class ObjectsDataBase
     {
-        private Obstacle _obstacle;
+        private Obstacle[] _obstacles;
         private Player _player;
 
         private Food[] _foods;
@@ -15,23 +15,24 @@ namespace Core.LevelManagement
 
         public void LoadResources()
         {
-            _obstacle = Resources.Load<Obstacle>("Prefabs/Obstacles/Obstacle");
+            _obstacles = Resources.LoadAll<Obstacle>("Prefabs/Obstacles");
             _player = Resources.Load<Player>("Prefabs/Player/Player");
 
             _foods = Resources.LoadAll<Food>("Prefabs/Foods");
             _roads = Resources.LoadAll<Road>("Prefabs/Roads");
         }
 
-        public Obstacle TryGetObstacle(out bool success)
+        public Obstacle TryGetRandomObstacle(out bool success)
         {
-            if (_obstacle != null)
+            if (_obstacles.Length == 0)
             {
-                success = true;
-                return _obstacle;
+                success = false;
+                throw new System.Exception("Obstacle isn't loaded in DataBase");
             }
 
-            success = false;
-            throw new System.Exception("Obstacle isn't loaded in DataBase");
+            var obstacle = _obstacles[Random.Range(0, _obstacles.Length)];
+            success = true;
+            return obstacle;
         }
 
         public Player TryGetPlayer(out bool success)

@@ -8,6 +8,7 @@ namespace Objects
     public class Player : ObjectBehaviour
     {
         [SerializeField] private Movement movement;
+        [SerializeField] private PlayerCharacterScaler playerCharacterScaler;
 
         private readonly Strength _strength = new Strength();
         private bool _isPlayerPushingObstacle;
@@ -54,6 +55,7 @@ namespace Objects
                 GuiEvent.UpdateStrengthCounter.Invoke(_strength.GetRoundedStrength());
                 movement.MoveWithObstacleSpeed();
                 _strength.TryRemoveStrength(out var success);
+                playerCharacterScaler.SetScale(_strength.GetRoundedStrength());
                 if (success == false)
                 {
                     LevelEvent.PlayerLose.Invoke();
@@ -78,6 +80,7 @@ namespace Objects
         
         private void AddStrength(float value)
         {
+            playerCharacterScaler.SetScale(_strength.GetRoundedStrength());
             _strength.AddStrength(value);
             GuiEvent.UpdateStrengthCounter.Invoke(_strength.GetRoundedStrength());
         }
