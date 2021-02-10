@@ -10,10 +10,9 @@ namespace Objects
 
         private Transform _targetTransform;
         private bool _isTargetSetted;
-        
-        
 
-        private void Start()
+
+        private void Awake()
         {
             CameraEvent.SetPlayerAsTarget.AddListener(SetTarget);
             CameraEvent.ResetTarget.AddListener(ResetTarget);
@@ -30,7 +29,7 @@ namespace Objects
             _targetTransform = null;
             _isTargetSetted = false;
         }
-        
+
         private void LateUpdate()
         {
             if (_isTargetSetted == false) return;

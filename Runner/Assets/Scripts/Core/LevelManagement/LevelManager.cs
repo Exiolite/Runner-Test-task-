@@ -1,18 +1,14 @@
-﻿using Events;
-
-namespace Core.LevelManagement
+﻿namespace Core.LevelManagement
 {
     public class LevelManager
     {
-        // Core Modules.
         public ObjectsDataBase DataBase { get; } = new ObjectsDataBase();
         public Factory Factory { get; private set; }
-        
-        private bool _isFactoryInitialized;
+
 
         private readonly LevelCreator _levelCreator = new LevelCreator();
-        
 
+        private bool _isFactoryInitialized;
 
 
         public void InitializeFactory(Factory factory)
@@ -39,7 +35,7 @@ namespace Core.LevelManagement
         {
             CreateLevel();
         }
-        
+
 
         private bool CheckInitialization()
         {
@@ -47,6 +43,7 @@ namespace Core.LevelManagement
             {
                 return _isFactoryInitialized;
             }
+
             throw new System.Exception("Factory isn't initialized in level manager");
         }
     }

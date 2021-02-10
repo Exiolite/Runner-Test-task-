@@ -6,7 +6,7 @@ namespace Core.LevelManagement
 {
     public class Factory : MonoBehaviour
     {
-        public Obstacle SpawnOstacleAtPosition(Obstacle target, Vector3 targetPosition)
+        public Obstacle SpawnObstacleAtPosition(Obstacle target, Vector3 targetPosition)
         {
             var spawnedObject = Instantiate(target);
             spawnedObject.transform.position = targetPosition;
@@ -19,11 +19,10 @@ namespace Core.LevelManagement
             food.gameObject.transform.position = targetPosition;
             return food;
         }
-        
+
         public void SpawnObject(GameObject target)
         {
             Instantiate(target);
         }
-
     }
 }
