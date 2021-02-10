@@ -50,7 +50,7 @@ MonoBehaviour:
   movement:
     playerSpeed: 5
     obstacleSpeed: 1
-  playerCharacterScaler:
+  playerCharacterHeightRegulator:
     topPeace: {fileID: 4495325161542491861}
     midPeace: {fileID: 5084979176301203697}
 --- !u!54 &570776263880059900
