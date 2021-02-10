@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement:
-    playerSpeed: 4
+    playerSpeed: 5
     obstacleSpeed: 1
   playerCharacterScaler:
     topPeace: {fileID: 4495325161542491861}

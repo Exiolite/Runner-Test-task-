@@ -63,7 +63,7 @@ namespace Core.LevelManagement
                         var foodPosition = new Vector3(randomLine, food.transform.position.y, amountOfFoods + offsetZ);
                         
                         var spawnedFood = _levelManager.Factory.SpawnFoodAtPosition(food, foodPosition);
-                        spawnedFood.SetFoodStrength(_strengthForFood[foodStraightLines-1] / AmountOfFoodsInLine);
+                        spawnedFood.SetFoodStrength(_strengthForFood[foodStraightLines-1] / AmountOfFoodsInLine + 1);
                     }
                 }
             }
@@ -73,7 +73,7 @@ namespace Core.LevelManagement
         {
             for (var obstacleBarricade = 0; obstacleBarricade < BarricadesOnLevel; obstacleBarricade++)
             {
-                int minStrengthForLine = 10000;
+                int minStrengthForLine = 1000;
                 for (var posX = 0; posX < 4; posX++)
                 {
                     var obstacle = _levelManager.DataBase.TryGetRandomObstacle(out var success);

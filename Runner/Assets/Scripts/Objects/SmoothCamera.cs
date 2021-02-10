@@ -1,4 +1,5 @@
-﻿using Events;
+﻿using System;
+using Events;
 using UnityEngine;
 
 namespace Objects
@@ -10,15 +11,14 @@ namespace Objects
 
         private Transform _targetTransform;
         private bool _isTargetSetted;
-        
-        
 
-        private void Start()
+
+        private void Awake()
         {
             CameraEvent.SetPlayerAsTarget.AddListener(SetTarget);
             CameraEvent.ResetTarget.AddListener(ResetTarget);
         }
-
+        
         private void SetTarget(Transform target)
         {
             _targetTransform = target;

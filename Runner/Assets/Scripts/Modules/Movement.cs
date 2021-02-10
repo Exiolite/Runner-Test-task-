@@ -5,7 +5,7 @@ namespace Modules
     [System.Serializable]
     public class Movement
     {
-        [SerializeField] private float playerSpeed = 4;
+        [SerializeField] private float playerSpeed = 5;
         [SerializeField] private float obstacleSpeed = 1;
 
         private Transform _parentTransform;

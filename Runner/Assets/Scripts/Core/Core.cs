@@ -36,6 +36,7 @@ namespace Core
         
         private void FirstInitialization()
         {
+            gameObject.AddComponent<GameInput>();
             AddFactory();
             LevelManagerInitialization();
             if (disableLevelCreation == false)
