@@ -7,10 +7,10 @@ namespace Core
     public class Core : MonoBehaviour
     {
         #region Singleton
-    
+
         private static Core _instance;
         public static Core Instance => _instance;
-    
+
         void Awake()
         {
             if (_instance == null)
@@ -20,20 +20,21 @@ namespace Core
                 Destroy(gameObject);
                 return;
             }
+
             DontDestroyOnLoad(gameObject);
             FirstInitialization();
         }
+
         #endregion
 
 
-        public LevelManager LevelManager { get; } = new LevelManager();
-        
         [SerializeField] private bool disableLevelCreation;
 
+        private LevelManager LevelManager { get; } = new LevelManager();
+
         private Factory _factory;
-        
-        
-        
+
+
         private void FirstInitialization()
         {
             gameObject.AddComponent<GameInput>();

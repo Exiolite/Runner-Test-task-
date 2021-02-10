@@ -5,16 +5,15 @@ namespace Modules
     public class Strength
     {
         private const float StrengthRemovingValue = 150;
-        
-        private float _strength;
 
+        private float _strength;
 
 
         public float GetRoundedStrength()
         {
             return Mathf.Round(_strength);
         }
-        
+
         public void SetStrength(float value)
         {
             _strength = value;
@@ -24,7 +23,7 @@ namespace Modules
         {
             _strength += value;
         }
-        
+
         public void TryRemoveStrength(out bool success)
         {
             if (_strength > 0)

@@ -9,19 +9,19 @@ namespace Modules
         [SerializeField] private float obstacleSpeed = 1;
 
         private Transform _parentTransform;
-        private bool _isInitialized;
-
+        
         private int _maxLeftLine = 0;
         private int _maxRightLine = 3;
 
+        private bool _isInitialized;
 
 
+        
         public void Initialize(Transform parentTransform)
         {
             _parentTransform = parentTransform;
             _isInitialized = true;
         }
-        
         
         
         public void MoveWithPlayerSpeed()
@@ -35,8 +35,7 @@ namespace Modules
             CheckInitialization();
             MoveForwardWithDeltaSpeed(obstacleSpeed);
         }
-
-        //True == right, False == left.
+        
         public void ChangeLine(bool swipeDirection)
         {
             int clampedPosX;

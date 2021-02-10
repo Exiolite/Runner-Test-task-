@@ -8,15 +8,14 @@ namespace Objects
     public class Player : ObjectBehaviour
     {
         [SerializeField] private Movement movement;
-        [SerializeField] private PlayerCharacterScaler playerCharacterScaler;
+        [SerializeField] private PlayerCharacterHeightRegulator playerCharacterHeightRegulator;
 
         private readonly Strength _strength = new Strength();
         private bool _isPlayerPushingObstacle;
 
         private bool _disableUpdate;
-        
-        
-        
+
+
         protected override void Initialization()
         {
             _disableUpdate = false;
@@ -42,7 +41,7 @@ namespace Objects
                 GuiEvent.UpdateStrengthCounter.Invoke(_strength.GetRoundedStrength());
                 movement.MoveWithObstacleSpeed();
                 _strength.TryRemoveStrength(out var success);
-                playerCharacterScaler.SetScale(_strength.GetRoundedStrength());
+                playerCharacterHeightRegulator.SetRobotsHeight(_strength.GetRoundedStrength());
                 if (success == false)
                 {
                     LevelEvent.PlayerLose.Invoke();
@@ -66,20 +65,19 @@ namespace Objects
         }
 
 
-
         private void Swipe(bool direction)
         {
             if (_isPlayerPushingObstacle) return;
             movement.ChangeLine(direction);
         }
-        
+
         private void AddStrength(float value)
         {
-            playerCharacterScaler.SetScale(_strength.GetRoundedStrength());
+            playerCharacterHeightRegulator.SetRobotsHeight(_strength.GetRoundedStrength());
             _strength.AddStrength(value);
             GuiEvent.UpdateStrengthCounter.Invoke(_strength.GetRoundedStrength());
         }
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Obstacle"))

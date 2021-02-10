@@ -1,5 +1,4 @@
-﻿using System;
-using Events;
+﻿using Events;
 using UnityEngine;
 
 namespace Objects
@@ -18,7 +17,7 @@ namespace Objects
             CameraEvent.SetPlayerAsTarget.AddListener(SetTarget);
             CameraEvent.ResetTarget.AddListener(ResetTarget);
         }
-        
+
         private void SetTarget(Transform target)
         {
             _targetTransform = target;
@@ -30,7 +29,7 @@ namespace Objects
             _targetTransform = null;
             _isTargetSetted = false;
         }
-        
+
         private void LateUpdate()
         {
             if (_isTargetSetted == false) return;

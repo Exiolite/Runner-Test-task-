@@ -8,7 +8,6 @@ namespace Core.LevelManagement
     {
         private Obstacle[] _obstacles;
         private Player _player;
-
         private Food[] _foods;
         private Road[] _roads;
 
@@ -21,6 +20,7 @@ namespace Core.LevelManagement
             _foods = Resources.LoadAll<Food>("Prefabs/Foods");
             _roads = Resources.LoadAll<Road>("Prefabs/Roads");
         }
+
 
         public Obstacle TryGetRandomObstacle(out bool success)
         {
@@ -59,7 +59,7 @@ namespace Core.LevelManagement
             success = true;
             return food;
         }
-        
+
         public Road TryGetRandomRoad(out bool success)
         {
             if (_roads.Length == 0)

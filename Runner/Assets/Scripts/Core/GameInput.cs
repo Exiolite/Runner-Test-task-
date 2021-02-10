@@ -5,9 +5,9 @@ namespace Core
 {
     public class GameInput : MonoBehaviour
     {
-        // Не мой код, использовал его когда-то для другого проекта.
-        
-        
+        // Код свайпа не мой, использовал его когда-то для другого проекта.
+
+
         //SwipteInput
         private const float MaxSwipeTime = 0.5f;
         private const float MinSwipeDistance = 0.17f;
@@ -93,7 +93,7 @@ namespace Core
                 _swipedRight = _swipedRight || Input.GetKeyDown(KeyCode.RightArrow);
                 _swipedLeft = _swipedLeft || Input.GetKeyDown(KeyCode.LeftArrow);
             }
-            
+
             if (_swipedRight)
             {
                 InputEvent.HorizontalSwipe.Invoke(true);
