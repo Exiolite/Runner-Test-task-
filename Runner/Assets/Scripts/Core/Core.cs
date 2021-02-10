@@ -30,8 +30,7 @@ namespace Core
 
         [SerializeField] private bool disableLevelCreation;
 
-        private LevelManager LevelManager { get; } = new LevelManager();
-
+        private readonly LevelManager _levelManager = new LevelManager();
         private Factory _factory;
 
 
@@ -53,14 +52,14 @@ namespace Core
 
         private void LevelManagerInitialization()
         {
-            LevelManager.InitializeFactory(_factory);
-            LevelManager.Initialize();
-            LevelEvent.RecreateLevel.AddListener(LevelManager.RecreateLevel);
+            _levelManager.InitializeFactory(_factory);
+            _levelManager.Initialize();
+            LevelEvent.RecreateLevel.AddListener(_levelManager.RecreateLevel);
         }
 
         private void GenerateLevel()
         {
-            LevelManager.CreateLevel();
+            _levelManager.CreateLevel();
         }
     }
 }
