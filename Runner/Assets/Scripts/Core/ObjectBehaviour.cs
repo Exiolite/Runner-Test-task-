@@ -5,11 +5,8 @@ namespace Core
 {
     public abstract class ObjectBehaviour : MonoBehaviour
     {
-        protected Core Core;
-        
         private void Awake()
         {
-            Core = Core.Instance;
             Initialization();
         }
 

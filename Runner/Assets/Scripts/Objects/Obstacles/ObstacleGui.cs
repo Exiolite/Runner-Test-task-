@@ -12,15 +12,13 @@ namespace Objects.Obstacles
 
         private Strength _strength;
 
-        
-        
+
         public void DisplayObstacleStrength()
         {
             obstacleStrengthCounter.text = _strength.GetRoundedStrength().ToString(CultureInfo.InvariantCulture);
         }
-        
-        
-        
+
+
         protected override void Initialization()
         {
             _strength = GetComponentInParent<Obstacle>().Strength;
@@ -30,6 +28,7 @@ namespace Objects.Obstacles
         {
             DisplayObstacleStrength();
         }
+        
         protected override void Execute(){}
         protected override void BeforeDestroy(){}
     }

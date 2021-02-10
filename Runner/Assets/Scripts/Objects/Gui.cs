@@ -16,15 +16,13 @@ namespace Objects
         private float _playersStrength;
 
 
-
         public void RecreateLevel()
         {
             LevelEvent.RecreateLevel.Invoke();
             LevelEvent.DestroyAllObjects.Invoke();
             resetButton.gameObject.SetActive(false);
         }
-        
-        
+
 
         private void Start()
         {
@@ -39,12 +37,12 @@ namespace Objects
         {
             resetButton.gameObject.SetActive(false);
         }
-        
+
         private void ShowResetButton()
         {
             resetButton.gameObject.SetActive(true);
         }
-        
+
         private void SetStrength(float strength)
         {
             playersStrengthCounter.text = strength.ToString(CultureInfo.InvariantCulture);
