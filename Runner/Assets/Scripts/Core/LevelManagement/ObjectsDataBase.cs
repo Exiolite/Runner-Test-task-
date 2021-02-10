@@ -17,7 +17,7 @@ namespace Core.LevelManagement
             _obstacles = Resources.LoadAll<Obstacle>("Prefabs/Obstacles");
             _player = Resources.Load<Player>("Prefabs/Player/Player");
 
-            _foods = Resources.LoadAll<Food>("Prefabs/Foods");
+            _foods = Resources.LoadAll<Food>("Prefabs/PowerUps");
             _roads = Resources.LoadAll<Road>("Prefabs/Roads");
         }
 
